@@ -41,6 +41,9 @@ SHELL_RE = re.compile(r"(mainMenu|MainMenu|menu\.|appBar)")
 SCENARIO_A_MODULES = {
     "fe-core", "fe-home", "fe-location", "fe-insuree",
     "fe-policy", "fe-contribution", "fe-payment",
+    # fe-product: the policy form embeds product.ProductPicker, so its keys
+    # (label, placeholder, none-label) render on the Scenario A policy screen.
+    "fe-product",
 }
 
 
