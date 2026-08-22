@@ -1586,5 +1586,8 @@
   "tools.menu.emails": "إعدادات البريد الإلكتروني",
   "tools.menu.feedbacks": "نماذج التغذية الراجعة",
   "tools.menu.funding": "التمويل",
-  "tools.menu.renewals": "تجديد وثائق التأمين"
+  "tools.menu.renewals": "تجديد وثائق التأمين",
+  "core.DatePicker.ok": "موافق",
+  "core.DatePicker.cancel": "إلغاء",
+  "core.DatePicker.clear": "مسح"
 }
