@@ -1839,5 +1839,9 @@
   "PolicyValues.inPatient": "إقامة داخلية",
   "PolicyValues.outPatient": "عيادات خارجية",
   "PolicyValues.deductible": "مبلغ التحمل",
-  "PolicyValues.remuneratedHealthCare": "الرعاية الصحية المسددة"
+  "PolicyValues.remuneratedHealthCare": "الرعاية الصحية المسددة",
+  "policy.PolicyForm.mutation.failed.title": "فشل الحفظ",
+  "policy.PolicyForm.mutation.failed.message": "تعذّر حفظ وثيقة التأمين. يرجى مراجعة البيانات والمحاولة مرة أخرى.",
+  "contribution.ContributionForm.mutation.failed.title": "فشل الحفظ",
+  "contribution.ContributionForm.mutation.failed.message": "تعذّر حفظ الاشتراك. يرجى مراجعة البيانات والمحاولة مرة أخرى."
 }
