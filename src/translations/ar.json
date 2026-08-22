@@ -242,5 +242,21 @@
   "core.LoginPage.password.label": "كلمة المرور",
   "core.LoginPage.authErrorGeneral": "حدث خطأ غير معروف.",
   "core.LoginPage.authErrorHealthFacilityContractInvalid": "انتهت صلاحية تعاقد المنشأة الصحية.",
-  "core.logoAlt": "HealthPay Payer System"
+  "core.logoAlt": "HealthPay Payer System",
+  "home.HomePageContainer.welcomeMessage": "أهلاً {otherNames} {lastName}!",
+  "home.HomePageContainer.title": "الصفحة الرئيسية",
+  "appName": "هيلث باي للمدفوعات الصحية",
+  "currency": "ج.م",
+  "close": "إغلاق",
+  "ok": "موافق",
+  "cancel": "إلغاء",
+  "rowsPerPage": "عدد الصفوف في الصفحة",
+  "ofPages": "من",
+  "selectAll": "تحديد الكل",
+  "clearSelected": "إلغاء التحديد",
+  "noRecord": "لا توجد سجلات للعرض",
+  "search.title": "معايير البحث",
+  "search.apply": "تطبيق",
+  "picker.close": "إغلاق",
+  "picker.select": "اختيار"
 }
