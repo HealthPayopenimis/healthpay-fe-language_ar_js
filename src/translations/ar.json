@@ -49,10 +49,8 @@
   "core.ChangePassword": "تغيير كلمة المرور",
   "core.Help": "المساعدة",
   "core.About": "حول النظام",
-
   "home.mainMenu": "الرئيسية",
   "home.dashboard": "لوحة المتابعة",
-
   "admin.mainMenu": "الإدارة",
   "admin.menu.products": "برامج التغطية (المزايا)",
   "admin.menu.healthFacilities": "المنشآت الصحية",
@@ -66,7 +64,6 @@
   "admin.menu.claimAdministrators": "مسؤولو المطالبات",
   "admin.menu.payers": "جهات الدفع",
   "admin.menu.locations": "المواقع الجغرافية",
-
   "location.mainMenu": "المواقع",
   "location.region": "المحافظة",
   "location.district": "المركز / الحي",
@@ -79,7 +76,6 @@
   "location.RegionPicker.label": "المحافظة",
   "location.DistrictPicker.label": "المركز / الحي",
   "location.HealthFacilityPicker.label": "المنشأة الصحية",
-
   "insuree.mainMenu": "المؤمَّن عليهم",
   "insuree.menu.insurees": "المؤمَّن عليهم",
   "insuree.menu.families": "الأسر",
@@ -104,7 +100,6 @@
   "insuree.Family.confirmationNo": "رقم التأكيد",
   "insuree.familySummaries.location": "الموقع",
   "insuree.CappedItemServicePicker.label": "الحد الأقصى للخدمات والمستلزمات",
-
   "claim.mainMenu": "المطالبات",
   "claim.menu.healthFacilityClaims": "مطالبات المنشآت الصحية",
   "claim.menu.reviews": "مراجعة المطالبات",
@@ -147,7 +142,6 @@
   "claim.action.review": "مراجعة",
   "claim.action.feedback": "التغذية الراجعة",
   "claim.reviewStatus": "حالة المراجعة",
-
   "claim_batch.menu.claim_batch": "التسوية الدورية",
   "claim_batch.BatchRun": "تشغيل التسوية الدورية",
   "claim_batch.BatchRunLauncher.title": "بدء تسوية دورية",
@@ -157,7 +151,6 @@
   "claim_batch.batchRunSummaries.product": "برنامج التغطية",
   "claim_batch.batchRunSummaries.careType": "نوع الرعاية",
   "claim_batch.batchRunSummaries.calculatedDate": "تاريخ الاحتساب",
-
   "policy.mainMenu": "وثائق التأمين",
   "policy.menu.policies": "وثائق التأمين",
   "policy.Policy": "وثيقة التأمين",
@@ -174,7 +167,6 @@
   "policy.policyStatus.4": "منتهية",
   "policy.policyStatus.8": "موقوفة",
   "policy.policyStatus.16": "ملغاة",
-
   "contribution.mainMenu": "الاشتراكات",
   "contribution.menu.contributions": "الاشتراكات",
   "contribution.Contribution": "الاشتراك",
@@ -185,13 +177,11 @@
   "contribution.payType.C": "نقدًا",
   "contribution.payType.B": "تحويل بنكي",
   "contribution.payType.M": "محفظة إلكترونية",
-
   "payment.mainMenu": "المدفوعات",
   "payment.menu.payments": "المدفوعات",
   "payment.payment.receivedAmount": "المبلغ المستلم",
   "payment.payment.requestDate": "تاريخ الطلب",
   "payment.payment.receiptNo": "رقم الإيصال",
-
   "product.mainMenu": "برامج التغطية",
   "product.menu.products": "برامج التغطية",
   "product.Product": "برنامج التغطية",
@@ -203,7 +193,6 @@
   "product.product.maxMembers": "الحد الأقصى لأفراد الأسرة",
   "product.product.deductible": "مبلغ التحمل",
   "product.product.ceiling": "الحد الأقصى للتغطية",
-
   "medical.mainMenu": "الخدمات الطبية",
   "medical.service": "الخدمة الطبية",
   "medical.item": "المستلزم الطبي",
@@ -213,43 +202,45 @@
   "medical.item.code": "كود المستلزم",
   "medical.item.name": "اسم المستلزم",
   "medical.item.price": "السعر",
-
   "medical_pricelist.mainMenu": "قوائم الأسعار",
   "medical_pricelist.servicesPricelist": "قائمة أسعار الخدمات",
   "medical_pricelist.itemsPricelist": "قائمة أسعار المستلزمات",
-
   "payer.mainMenu": "جهات الدفع",
   "payer.Payer": "جهة الدفع",
   "payer.payer.name": "اسم جهة الدفع",
   "payer.payer.type": "نوع جهة الدفع",
-
   "invoice.mainMenu": "الفواتير",
   "invoice.Invoice": "الفاتورة",
   "invoice.invoice.code": "رقم الفاتورة",
   "invoice.invoice.dateInvoice": "تاريخ الفاتورة",
   "invoice.invoice.amountTotal": "إجمالي الفاتورة",
-
   "policyholder.mainMenu": "أصحاب الأعمال / حاملو الوثائق",
   "policyholder.PolicyHolder": "صاحب العمل",
   "policyholder.policyHolder.code": "كود صاحب العمل",
   "policyholder.policyHolder.tradeName": "الاسم التجاري",
-
   "contract.mainMenu": "العقود",
   "contract.Contract": "العقد",
   "contract.contract.code": "رقم العقد",
   "contract.contract.dateValidFrom": "ساري من",
   "contract.contract.dateValidTo": "ساري حتى",
-
   "tools.mainMenu": "الأدوات",
   "tools.menu.registers": "السجلات",
   "tools.menu.extracts": "الاستخراجات",
   "tools.menu.reports": "التقارير",
   "tools.menu.utilities": "أدوات مساعدة",
-
   "profile.mainMenu": "الملف الشخصي",
-
   "tasks_management.mainMenu": "إدارة المهام",
   "grievance.mainMenu": "الشكاوى والتظلمات",
   "individual.mainMenu": "الأفراد",
-  "socialProtection.mainMenu": "الحماية الاجتماعية"
+  "socialProtection.mainMenu": "الحماية الاجتماعية",
+  "core.LoginPage.appName": "HealthPay Payer System — هيلث باي للمدفوعات الصحية",
+  "core.LoginPage.pageTitle": "تسجيل الدخول",
+  "core.LoginPage.loginCaption": "المصادقة عبر",
+  "core.LoginPage.howToUse": "دليل المستخدم",
+  "core.LoginPage.backButton": "رجوع",
+  "core.LoginPage.username.label": "اسم المستخدم",
+  "core.LoginPage.password.label": "كلمة المرور",
+  "core.LoginPage.authErrorGeneral": "حدث خطأ غير معروف.",
+  "core.LoginPage.authErrorHealthFacilityContractInvalid": "انتهت صلاحية تعاقد المنشأة الصحية.",
+  "core.logoAlt": "HealthPay Payer System"
 }
