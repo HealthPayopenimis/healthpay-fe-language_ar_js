@@ -1591,5 +1591,112 @@
   "core.DatePicker.cancel": "إلغاء",
   "core.DatePicker.clear": "مسح",
   "insuree.FamilyForm.mutation.failed.title": "فشل الحفظ",
-  "insuree.FamilyForm.mutation.failed.message": "تعذّر حفظ بيانات الأسرة. يرجى مراجعة البيانات والمحاولة مرة أخرى."
+  "insuree.FamilyForm.mutation.failed.message": "تعذّر حفظ بيانات الأسرة. يرجى مراجعة البيانات والمحاولة مرة أخرى.",
+  "payment.addNewPayment.tooltip": "إضافة دفعة جديدة",
+  "payment.addNewPaymentTooltip": "إضافة دفعة جديدة",
+  "payment.CreatePayment.mutationLabel": "إنشاء دفعة",
+  "payment.deletePayment.tooltip": "حذف الدفعة",
+  "payment.addNewPayment.tooltip.selectPremium": "يرجى اختيار اشتراك لإضافة دفعة",
+  "payment.deletePaymentDialog.message": "هل أنت متأكد من حذف هذه الدفعة؟",
+  "payment.deletePaymentDialog.title": "حذف الدفعة",
+  "payment.expectedAmount_Gte": "المبلغ المتوقع أكبر من",
+  "payment.expectedAmount_Lte": "المبلغ المتوقع أقل من",
+  "payment.payment.dateLastSms": "تاريخ آخر رسالة نصية",
+  "payment.payment.expectedAmount": "المبلغ المتوقع",
+  "payment.payment.matchedDate": "تاريخ المطابقة",
+  "payment.payment.officerCode": "كود مسؤول التسجيل",
+  "payment.payment.origin": "مصدر الدفع",
+  "payment.payment.receivedDate": "تاريخ الاستلام",
+  "payment.payment.receivedDateFrom": "تاريخ الاستلام من",
+  "payment.payment.receivedDateTo": "تاريخ الاستلام إلى",
+  "payment.payment.rejectedReason": "سبب الرفض",
+  "payment.payment.requestDateFrom": "تاريخ الطلب من",
+  "payment.payment.requestDateTo": "تاريخ الطلب إلى",
+  "payment.payment.status.-5": "فشل في المطابقة",
+  "payment.payment.status.-4": "فشل في استلام الدفعة",
+  "payment.payment.status.-3": "فشل في استلام رقم التحكم",
+  "payment.payment.status.-2": "فشل في طلب رقم التحكم",
+  "payment.payment.status.-1": "فشل في إنشاء الدفعة",
+  "payment.payment.status.0": "ملغاة",
+  "payment.payment.status.1": "تم إنشاء الدفعة",
+  "payment.payment.status.2": "تم طلب رقم التحكم",
+  "payment.payment.status.3": "تم استلام رقم التحكم",
+  "payment.payment.status.4": "تم استلام الدفعة",
+  "payment.payment.status.5": "تمت المطابقة",
+  "payment.payment.transferFee": "رسوم التحويل",
+  "payment.payment.typeOfPayment": "نوع الدفع",
+  "payment.PaymentOverview.newTitle": "دفعة جديدة",
+  "payment.PaymentOverview.title": "تفاصيل الدفعة",
+  "payment.paymentSummaries": "تم العثور على {count} دفعة",
+  "payment.PremiumsPayments": "{count} دفعة مطابقة",
+  "payment.PremiumsPaymentsOfPremium": "{count} دفعة مطابقة للاشتراك {premium}",
+  "payment.receivedAmount_Gte": "المبلغ المستلم أكبر من",
+  "payment.receivedAmount_Lte": "المبلغ المستلم أقل من",
+  "payment.UpdatePayment.mutationLabel": "تعديل الدفعة",
+  "payment.showReconciledOnly": "عرض المسوّاة فقط",
+  "Premiums": "الاشتراكات",
+  "Payments": "المدفوعات",
+  "payment.Premiums": "الاشتراكات",
+  "payment.Payments": "المدفوعات",
+  "contribution.Premiums": "الاشتراكات",
+  "insuree.Premiums": "الاشتراكات",
+  "insuree.Payments": "المدفوعات",
+  "paymentInvoices": {
+    "label": "المدفوعات",
+    "searcherResultsTitle": "تم العثور على {paymentInvoicesTotalCount} دفعة"
+  },
+  "paymentInvoice": {
+    "reconciliationStatus": {
+      "label": "حالة التسوية",
+      "NOT_RECONCILIATED": "غير مسوّاة",
+      "RECONCILIATED": "مسوّاة",
+      "REFUNDED": "مستردة",
+      "CANCELLED": "ملغاة"
+    },
+    "status": {
+      "label": "الحالة",
+      "REJECTED": "مرفوضة",
+      "ACCEPTED": "مقبولة",
+      "REFUNDED": "مستردة",
+      "CANCELLED": "ملغاة"
+    },
+    "codeExt": "الكود",
+    "label": "البيان",
+    "codeTp": "كود الطرف الثالث",
+    "codeReceipt": "رقم الإيصال",
+    "fees": "الرسوم",
+    "amountReceived": "المبلغ المستلم",
+    "datePayment": "تاريخ الدفع",
+    "paymentOrigin": "مصدر الدفع",
+    "payerRef": "مرجع جهة الدفع",
+    "payerName": "اسم جهة الدفع",
+    "create": {
+      "label": "إنشاء دفعة جديدة",
+      "mutationLabel": "إنشاء دفعة {paymentInvoiceLabel} لـ {code}"
+    },
+    "update": {
+      "label": "تعديل الدفعة",
+      "mutationLabel": "تعديل دفعة {paymentInvoiceLabel} لـ {code}"
+    },
+    "delete": {
+      "confirm": {
+        "title": "حذف {paymentInvoiceLabel}؟",
+        "message": "الحذف لا يعني إزالة البيانات من قاعدة البيانات، بل إلغاء تنشيطها من القائمة المعروضة فقط."
+      },
+      "mutationLabel": "حذف دفعة {paymentInvoiceLabel} لـ {code}"
+    }
+  },
+  "detailPaymentInvoice": {
+    "status": {
+      "label": "الحالة",
+      "REJECTED": "مرفوضة",
+      "ACCEPTED": "مقبولة",
+      "REFUNDED": "مستردة",
+      "CANCELLED": "ملغاة"
+    },
+    "fees": "الرسوم",
+    "amount": "المبلغ",
+    "reconciliationId": "معرّف التسوية",
+    "reconciliationDate": "تاريخ التسوية"
+  }
 }

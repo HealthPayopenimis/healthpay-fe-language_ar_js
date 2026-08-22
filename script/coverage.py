@@ -31,6 +31,18 @@ import sys
 
 SHELL_RE = re.compile(r"(mainMenu|MainMenu|menu\.|appBar)")
 
+# Modules whose keys render on Scenario A screens. fe-payment is included even
+# though no Scenario A step is "a payment": it CONTRIBUTES panels to the family
+# overview (Premiums / Payments sections), which is the same screen used to add
+# members, the policy and the contribution. Omitting it is how bare `Premiums`,
+# `Payments` and payment.payment.* keys reached an operator. A module belongs
+# here if any of its keys can appear on a Scenario A route, not if the scenario
+# names it.
+SCENARIO_A_MODULES = {
+    "fe-core", "fe-home", "fe-location", "fe-insuree",
+    "fe-policy", "fe-contribution", "fe-payment",
+}
+
 
 def module_dirs(assembly, repos_dir):
     cfg = json.load(open(os.path.join(assembly, "openimis.json"), encoding="utf-8"))
@@ -52,7 +64,7 @@ def main():
 
     ar = json.load(open(os.path.join(os.path.dirname(__file__), "..", "src",
                                      "translations", "ar.json"), encoding="utf-8"))
-    shell_gaps, total, covered, missing_dirs = [], 0, 0, []
+    shell_gaps, scenario_gaps, total, covered, missing_dirs = [], [], 0, 0, []
 
     for name in module_dirs(args.assembly, args.repos_dir):
         if name.startswith("fe-language_"):
@@ -68,8 +80,10 @@ def main():
         covered += len(en) - len(miss)
         shell = [k for k in miss if SHELL_RE.search(k)]
         shell_gaps.extend(shell)
+        if name in SCENARIO_A_MODULES and miss:
+            scenario_gaps.extend(f"{name}:{k}" for k in miss)
         pct = 100 * (len(en) - len(miss)) / len(en) if en else 100
-        flag = "SHELL-GAP" if shell else ("GAP" if miss else "OK ")
+        flag = "SHELL-GAP" if shell else ("SCENARIO-A-GAP" if (name in SCENARIO_A_MODULES and miss) else ("GAP" if miss else "OK "))
         print(f"{flag:9} {name:26} {len(en)-len(miss):4}/{len(en):4}  {pct:5.1f}%")
         for k in shell:
             print(f"            SHELL KEY MISSING: {k}")
@@ -82,6 +96,13 @@ def main():
         return 2
     if shell_gaps:
         print(f"FAIL: {len(shell_gaps)} shell key(s) missing — these render on every screen")
+        return 2
+    if scenario_gaps:
+        print(f"FAIL: {len(scenario_gaps)} key(s) missing in Scenario A modules:")
+        for g in scenario_gaps[:15]:
+            print("   ", g)
+        if len(scenario_gaps) > 15:
+            print(f"    … and {len(scenario_gaps)-15} more")
         return 2
     if args.strict and covered < total:
         print("FAIL (--strict): non-shell coverage gaps remain")
