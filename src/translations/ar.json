@@ -1698,5 +1698,7 @@
     "amount": "المبلغ",
     "reconciliationId": "معرّف التسوية",
     "reconciliationDate": "تاريخ التسوية"
-  }
+  },
+  "insuree.InsureeForm.mutation.failed.title": "فشل الحفظ",
+  "insuree.InsureeForm.mutation.failed.message": "تعذّر حفظ بيانات المؤمَّن عليه. يرجى مراجعة البيانات والمحاولة مرة أخرى."
 }
