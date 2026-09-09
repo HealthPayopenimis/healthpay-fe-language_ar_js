@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan Scenario A modules for user-visible text that bypasses translation.
+"""Scan Scenario A and QA Fix V1 modules for visible text bypassing translation.
 
 The Arabic pack cannot fix what never goes through the translation layer.
 PolicyValuesPanel.js rendered <Typography>General</Typography> and four
@@ -16,8 +16,17 @@ import os
 import re
 import sys
 
-SCENARIO_A = ("fe-core", "fe-home", "fe-location", "fe-insuree",
-              "fe-policy", "fe-contribution", "fe-payment", "fe-product")
+SCENARIO_A = {
+    "fe-core", "fe-home", "fe-location", "fe-insuree",
+    "fe-policy", "fe-contribution", "fe-payment", "fe-product",
+}
+QA_FIX_V1 = {
+    "fe-claim", "fe-claim_batch", "fe-medical", "fe-medical_pricelist",
+    "fe-admin", "fe-policyholder", "fe-contribution_plan",
+    "fe-payment_cycle", "fe-tasks_management", "fe-invoice",
+    "fe-contract", "fe-tools",
+}
+SCANNED_MODULES = tuple(sorted(SCENARIO_A | QA_FIX_V1))
 
 # Latin text directly inside a text element, e.g. <Typography ...>General</Typography>
 PATTERN = re.compile(
@@ -34,7 +43,7 @@ def main():
     root = sys.argv[1]
     fail = "--fail" in sys.argv
     findings = []
-    for mod in SCENARIO_A:
+    for mod in SCANNED_MODULES:
         base = os.path.join(root, mod, "src")
         for dirpath, dirs, files in os.walk(base):
             dirs[:] = [d for d in dirs if d not in ("node_modules", "translations")]
@@ -56,7 +65,7 @@ def main():
     for mod, path, line, text in findings:
         print(f"HARDCODED  {path}:{line}  {text!r}")
     print("=" * 60)
-    print(f"{len(findings)} hardcoded Latin text node(s) in Scenario A modules")
+    print(f"{len(findings)} hardcoded Latin text node(s) in Scenario A and QA Fix V1 modules")
     return 1 if (findings and fail) else 0
 
 
