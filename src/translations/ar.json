@@ -1918,5 +1918,13 @@
   "contract.dateValidTo": "ساري حتى",
   "contract.amendment": "التعديل",
   "menu.invoices": "الفواتير",
-  "menu.bills": "أوامر السداد"
+  "menu.bills": "أوامر السداد",
+  "contributionPlan.dateValidFrom": "ساري من",
+  "contributionPlan.dateValidTo": "ساري حتى",
+  "medical.service.level": "المستوى",
+  "medical.serviceType": "نوع الخدمة",
+  "paymentPlan.dateValidFrom": "ساري من",
+  "paymentPlan.dateValidTo": "ساري حتى",
+  "policyHolder.policyHolder": "صاحب العمل",
+  "policyHolder.policyHolderUser.userName": "اسم المستخدم"
 }

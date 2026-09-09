@@ -52,12 +52,13 @@ def main():
     assembly = Path(args.assembly)
     repos_dir = Path(args.repos_dir)
 
+    qa_key_count = len(json.loads(QA_FILE.read_text(encoding="utf-8")))
     positive = run(assembly, repos_dir)
     expect(
         positive,
         0,
         [
-            "QA Fix V1: 72/72 keys covered",
+            f"QA Fix V1: {qa_key_count}/{qa_key_count} keys covered",
             "Shell, Scenario A, and QA Fix V1 surfaces: complete.",
             "fe-invoice",
             "/ 246",

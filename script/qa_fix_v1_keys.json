@@ -70,5 +70,13 @@
   "contract.datePaymentDue",
   "contract.dateValidFrom",
   "contract.dateValidTo",
-  "contract.amendment"
+  "contract.amendment",
+  "contributionPlan.dateValidFrom",
+  "contributionPlan.dateValidTo",
+  "medical.service.level",
+  "medical.serviceType",
+  "paymentPlan.dateValidFrom",
+  "paymentPlan.dateValidTo",
+  "policyHolder.policyHolder",
+  "policyHolder.policyHolderUser.userName"
 ]
