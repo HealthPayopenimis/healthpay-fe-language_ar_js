@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan Scenario A and QA Fix V1 modules for visible text bypassing translation.
+"""Scan Scenario A and QA Fix V1/V2 modules for visible text bypassing translation.
 
 The Arabic pack cannot fix what never goes through the translation layer.
 PolicyValuesPanel.js rendered <Typography>General</Typography> and four
@@ -26,7 +26,11 @@ QA_FIX_V1 = {
     "fe-payment_cycle", "fe-tasks_management", "fe-invoice",
     "fe-contract", "fe-tools",
 }
-SCANNED_MODULES = tuple(sorted(SCENARIO_A | QA_FIX_V1))
+QA_FIX_V2 = {
+    "fe-claim", "fe-invoice", "fe-tasks_management", "fe-tools",
+    "fe-profile", "fe-medical", "fe-medical_pricelist", "fe-claim_batch",
+}
+SCANNED_MODULES = tuple(sorted(SCENARIO_A | QA_FIX_V1 | QA_FIX_V2))
 
 # Latin text directly inside a text element, e.g. <Typography ...>General</Typography>
 PATTERN = re.compile(
@@ -65,7 +69,7 @@ def main():
     for mod, path, line, text in findings:
         print(f"HARDCODED  {path}:{line}  {text!r}")
     print("=" * 60)
-    print(f"{len(findings)} hardcoded Latin text node(s) in Scenario A and QA Fix V1 modules")
+    print(f"{len(findings)} hardcoded Latin text node(s) in Scenario A and QA Fix V1/V2 modules")
     return 1 if (findings and fail) else 0
 
 

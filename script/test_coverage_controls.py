@@ -11,9 +11,10 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 COVERAGE = SCRIPT_DIR / "coverage.py"
 AR_FILE = SCRIPT_DIR.parent / "src" / "translations" / "ar.json"
 QA_FILE = SCRIPT_DIR / "qa_fix_v1_keys.json"
+QA_V2_FILE = SCRIPT_DIR / "qa_fix_v2_keys.json"
 
 
-def run(assembly, repos_dir, ar_file=AR_FILE, qa_file=QA_FILE):
+def run(assembly, repos_dir, ar_file=AR_FILE, qa_file=QA_FILE, qa_v2_file=QA_V2_FILE):
     return subprocess.run(
         [
             sys.executable,
@@ -26,6 +27,8 @@ def run(assembly, repos_dir, ar_file=AR_FILE, qa_file=QA_FILE):
             str(ar_file),
             "--qa-keys-file",
             str(qa_file),
+            "--qa-v2-keys-file",
+            str(qa_v2_file),
         ],
         check=False,
         text=True,
@@ -53,13 +56,15 @@ def main():
     repos_dir = Path(args.repos_dir)
 
     qa_key_count = len(json.loads(QA_FILE.read_text(encoding="utf-8")))
+    qa_v2_key_count = len(json.loads(QA_V2_FILE.read_text(encoding="utf-8")))
     positive = run(assembly, repos_dir)
     expect(
         positive,
         0,
         [
             f"QA Fix V1: {qa_key_count}/{qa_key_count} keys covered",
-            "Shell, Scenario A, and QA Fix V1 surfaces: complete.",
+            f"QA Fix V2: {qa_v2_key_count}/{qa_v2_key_count} keys covered",
+            "Shell, Scenario A, and QA Fix V1/V2 surfaces: complete.",
             "fe-invoice",
             "/ 246",
         ],
@@ -77,8 +82,19 @@ def main():
         expect(
             run(assembly, repos_dir, ar_file=qa_missing_file),
             2,
-            ["QA Fix V1 Arabic key(s) missing", "contract.amountDue"],
+            ["QA Fix Arabic key(s) missing", "contract.amountDue"],
             "missing-qa-key-negative-control",
+        )
+
+        qa_v2_missing = dict(ar)
+        del qa_v2_missing["claim.claimedDate"]
+        qa_v2_missing_file = tmp_path / "ar-missing-qa-v2.json"
+        qa_v2_missing_file.write_text(json.dumps(qa_v2_missing, ensure_ascii=False), encoding="utf-8")
+        expect(
+            run(assembly, repos_dir, ar_file=qa_v2_missing_file),
+            2,
+            ["QA Fix Arabic key(s) missing", "claim.claimedDate"],
+            "missing-qa-v2-key-negative-control",
         )
 
         shell_missing = dict(ar)

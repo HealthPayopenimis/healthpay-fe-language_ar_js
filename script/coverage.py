@@ -16,9 +16,9 @@ Three thresholds:
     screen. Any gap here is a hard failure (exit 2).
   * Scenario A keys remain a hard failure because that acceptance surface is
     already frozen and green.
-  * The exact QA Fix V1 keys in qa_fix_v1_keys.json are a hard failure. The
-    fixture also has to resolve to a real English-catalog key, preventing
-    no-op translations or misspelled identifiers.
+  * The exact QA Fix V1 and V2 keys in qa_fix_v1_keys.json and
+    qa_fix_v2_keys.json are hard failures. Both fixtures must resolve to real
+    English-catalog keys, preventing no-op translations or misspelled identifiers.
 
 All catalogs are flattened recursively before comparison. This matches the
 runtime locale loader and prevents nested catalogs (notably fe-invoice) from
@@ -45,6 +45,7 @@ SHELL_RE = re.compile(r"(mainMenu|MainMenu|menu\.|appBar)")
 # here if any of its keys can appear on a Scenario A route, not if the scenario
 # names it.
 QA_FIX_V1_PATH = os.path.join(os.path.dirname(__file__), "qa_fix_v1_keys.json")
+QA_FIX_V2_PATH = os.path.join(os.path.dirname(__file__), "qa_fix_v2_keys.json")
 
 SCENARIO_A_MODULES = {
     "fe-core", "fe-home", "fe-location", "fe-insuree",
@@ -90,12 +91,19 @@ def main():
     ap.add_argument(
         "--qa-keys-file",
         default=QA_FIX_V1_PATH,
-        help="QA key-contract override used by deterministic negative controls",
+        help="QA Fix V1 key-contract override used by deterministic negative controls",
+    )
+    ap.add_argument(
+        "--qa-v2-keys-file",
+        default=QA_FIX_V2_PATH,
+        help="QA Fix V2 key-contract override used by deterministic negative controls",
     )
     args = ap.parse_args()
 
     ar = flatten_messages(json.load(open(args.ar_file, encoding="utf-8")))
-    qa_required = set(json.load(open(args.qa_keys_file, encoding="utf-8")))
+    qa_v1_required = set(json.load(open(args.qa_keys_file, encoding="utf-8")))
+    qa_v2_required = set(json.load(open(args.qa_v2_keys_file, encoding="utf-8")))
+    qa_required = qa_v1_required | qa_v2_required
     shell_gaps, scenario_gaps, total, covered, missing_dirs = [], [], 0, 0, []
     measured_keys = set()
 
@@ -118,29 +126,34 @@ def main():
         if name in SCENARIO_A_MODULES and miss:
             scenario_gaps.extend(f"{name}:{k}" for k in miss)
         pct = 100 * (len(en) - len(miss)) / len(en) if en else 100
-        flag = "SHELL-GAP" if shell else ("QA-V1-GAP" if qa_module_gaps else ("SCENARIO-A-GAP" if (name in SCENARIO_A_MODULES and miss) else ("GAP" if miss else "OK ")))
+        flag = "SHELL-GAP" if shell else ("QA-GAP" if qa_module_gaps else ("SCENARIO-A-GAP" if (name in SCENARIO_A_MODULES and miss) else ("GAP" if miss else "OK ")))
         print(f"{flag:9} {name:26} {len(en)-len(miss):4}/{len(en):4}  {pct:5.1f}%")
         for k in shell:
             print(f"            SHELL KEY MISSING: {k}")
 
-    qa_unknown = sorted(qa_required - measured_keys)
-    qa_gaps = sorted(key for key in qa_required if key not in ar)
+    qa_v1_unknown = sorted(qa_v1_required - measured_keys)
+    qa_v2_unknown = sorted(qa_v2_required - measured_keys)
+    qa_v1_gaps = sorted(key for key in qa_v1_required if key not in ar)
+    qa_v2_gaps = sorted(key for key in qa_v2_required if key not in ar)
 
     print("=" * 64)
     print(f"overall: {covered}/{total} ({100*covered/total:.1f}%)")
-    print(f"QA Fix V1: {len(qa_required) - len(qa_gaps)}/{len(qa_required)} keys covered")
+    print(f"QA Fix V1: {len(qa_v1_required) - len(qa_v1_gaps)}/{len(qa_v1_required)} keys covered")
+    print(f"QA Fix V2: {len(qa_v2_required) - len(qa_v2_gaps)}/{len(qa_v2_required)} keys covered")
     if missing_dirs:
         print(f"NOT MEASURED (repo not cloned): {', '.join(missing_dirs)}")
         print("  -> clone every assembly module before trusting this report")
         return 2
-    if qa_unknown:
-        print(f"FAIL: {len(qa_unknown)} QA Fix V1 key(s) do not exist in the measured English catalogs:")
-        for key in qa_unknown:
+    if qa_v1_unknown or qa_v2_unknown:
+        unknown = qa_v1_unknown + qa_v2_unknown
+        print(f"FAIL: {len(unknown)} QA contract key(s) do not exist in the measured English catalogs:")
+        for key in unknown:
             print("   ", key)
         return 2
-    if qa_gaps:
-        print(f"FAIL: {len(qa_gaps)} QA Fix V1 Arabic key(s) missing:")
-        for key in qa_gaps:
+    if qa_v1_gaps or qa_v2_gaps:
+        gaps = qa_v1_gaps + qa_v2_gaps
+        print(f"FAIL: {len(gaps)} QA Fix Arabic key(s) missing:")
+        for key in gaps:
             print("   ", key)
         return 2
     if shell_gaps:
@@ -156,7 +169,7 @@ def main():
     if args.strict and covered < total:
         print("FAIL (--strict): non-shell coverage gaps remain")
         return 1
-    print("Shell, Scenario A, and QA Fix V1 surfaces: complete. Remaining gaps require reviewed localization scope.")
+    print("Shell, Scenario A, and QA Fix V1/V2 surfaces: complete. Remaining gaps require reviewed localization scope.")
     return 0
 
 
