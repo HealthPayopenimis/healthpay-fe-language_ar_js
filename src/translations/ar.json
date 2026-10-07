@@ -550,6 +550,7 @@
   "location.LocationPicker.openText": "فتح",
   "location.LocationPicker.closeText": "إغلاق",
   "location.Location2Picker.label": "المدينة / الحي",
+  "location.Location2Picker.optionalLabel": "المدينة / الحي (اختياري)",
   "location.Location2Picker.null": "الكل",
   "location.Location2Picker.none": "لا شيء",
   "location.Location3Picker.label": "الشياخة / القرية",
