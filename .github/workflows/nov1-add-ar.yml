@@ -1,0 +1,31 @@
+name: November Add Arabic labels
+on:
+  push:
+    branches: [fix/nov1-contribution-add-ar]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  labels-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Required label inventory and missing-key negative control
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const messages=JSON.parse(fs.readFileSync('src/translations/ar.json','utf8'));
+          const keys=['buttonText','contextTitle','policyLabel','policyPlaceholder','continueButton','noPolicies'].map(x=>'contribution.dedicatedAdd.'+x);
+          const complete=x=>keys.every(key=>typeof x[key]==='string'&&/[\u0600-\u06ff]/.test(x[key]));
+          assert.ok(complete(messages));
+          const broken={...messages};delete broken[keys[0]];assert.equal(complete(broken),false);
+          console.log('AR_ADD_LABELS=6/6; NEGATIVE_CONTROL=PASS');
+          JS
+      - name: Existing pack dependency installation
+        run: npm install --ignore-scripts --legacy-peer-deps
+      - name: Actual pack build
+        run: npm run build
