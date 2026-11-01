@@ -2702,5 +2702,11 @@
   "tools.strategyPicker.INSERT_UPDATE_DELETE": "إدراج وتحديث وحذف",
   "tools.strategyPicker.UPDATE": "تحديث",
   "tools.strategyPicker.null": "اختر استراتيجية",
-  "viewDetailsButtonTooltip": "عرض التفاصيل"
+  "viewDetailsButtonTooltip": "عرض التفاصيل",
+  "contribution.dedicatedAdd.buttonText": "إضافة اشتراك",
+  "contribution.dedicatedAdd.contextTitle": "اختر الوثيقة لإضافة الاشتراك",
+  "contribution.dedicatedAdd.policyLabel": "الوثيقة",
+  "contribution.dedicatedAdd.policyPlaceholder": "اختر وثيقة محفوظة",
+  "contribution.dedicatedAdd.continueButton": "متابعة إلى الاشتراك",
+  "contribution.dedicatedAdd.noPolicies": "لا توجد وثائق متاحة لإضافة اشتراك"
 }
